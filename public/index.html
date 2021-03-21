@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="bundle.js"></script>
+  <title>Brillin</title>
+  <link rel="shortcut icon" href="/images/Brillin.png" />
+  <meta charset="UTF-8">
+  <meta name="description" content="Drug Supply Chain ">
+  <meta name="author" content="Lim Chee Keat">
+  <meta name="keywords" content="=" Brillin, Drug, Supply Chain">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .img-container {
+      text-align: center;
+    }
+
+    .inline-block {
+      display: inline-block;
+    }
+
+    .button {
+      background-color: rgb(37, 163, 185);
+      border-radius: 4px;
+      border: none;
+      color: white;
+      padding: 6px 18px;
+      text-align: center;
+      font-size: 15px;
+      opacity: 0.6;
+      transition: 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+      outline: 0 !important;
+      border: 0 ;
+    }
+
+    .button:hover {
+      opacity: 1
+    }
+
+
+  </style>
+
+</head>
+
+
+
+
+<body style="background-color: rgb(187, 236, 238);">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <nav>
+          <div class="img-container">
+            <div class="inline-block"><img width="90" height="90" src="/images/Brillin2.png" alt=""></div>
+            <a href="https://kirinshibori.github.io/DrugChainUI/" target="_blank" style="text-decoration: none">
+              <div class="inline-block">
+                <h1 style="position: relative;top:10px; color: mediumturquoise;"> &nbsp; <b>Brillin DrugChain</b></h1>
+              </div>
+            </a>
+          </div>
+        </nav>
+        <hr />
+
+        <div>
+          <a href="about.html"><button class="button ">About</button></a>
+          <a href="https://rinkeby.etherscan.io/address/0x4975415603247b763A9a315E23923fE29f4BD220"
+            target="_blank"><button class="button" ;>Smart Contract</button></a>
+        </div>
+        <p style="clear:both"></p>
+
+        <form id="read">
+          <p style="color: black;">Enter <i><b>Product ID</b></i> or Scan <i><b>QR code</b></i></p>
+          <span>
+            <input id="field" placeholder="Product id"></input>
+            <input type="file" id="qr-input-file" accept="image/*">
+          </span>
+
+          <br>
+          <br>
+          <!-- <p id="message"></p> -->
+          <span><button type="submit" class="btn btn-primary">Submit</button></span>
+          <span style="float: right;" id="reader" width="300px"></span>
+          <br>
+
+          <div style="font-size:small; padding-bottom:10px; margin-top: 20px;">
+            <p style="margin: 5px;" id="read-result"></p>
+            <p style="margin: 5px;" id="read-result2"></p>
+            <p style="margin: 5px;" id="read-result3"></p>
+            <p style="margin: 5px;" id="read-result4"></p>
+            <p style="margin: 5px;" id="read-result5"></p>
+            <p style="margin: 5px;" id="read-result6"></p>
+            <p style="margin: 5px;" id="read-result7"></p>
+            <p style="margin: 5px;" id="read-result8"></p>
+          </div>
+
+          <script src="js/html5-qrcode.min.js"></script>
+
+          <script>
+
+            let field = document.getElementById('field');
+            // let message = document.getElementById('message');
+
+            const html5QrCode = new Html5Qrcode( /* element id */ "reader");
+
+            // File based scanning
+            const fileinput = document.getElementById('qr-input-file');
+
+            fileinput.addEventListener('change', e => {
+
+              if (e.target.files.length == 0) {
+                return;
+              }
+
+              const imageFile = e.target.files[0];
+
+              html5QrCode.scanFile(imageFile, true)
+                .then(result => {
+                  field.value = result;
+                  // message.innerText = result;
+                })
+                .catch(err => {
+                  alert("Failed");
+                  // failure, handle it.
+                  console.log(`Error scanning file. Reason: ${err}`)
+                });
+            });
+          </script>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

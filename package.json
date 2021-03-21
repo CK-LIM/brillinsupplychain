@@ -1,0 +1,29 @@
+{
+  "name": "drugsupplychain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh=pages -d dist",
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "homepage": "https://github.com/CK-LIM/brillinsupplychain",
+  "author": "LIM CHEE KEAT",
+  "license": "ISC",
+  "devDependencies": {
+    "truffle-hdwallet-provider": "^1.0.17",
+    "web3": "^1.2.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.3",
+    "gh-pages": "^3.1.0"
+  }
+}

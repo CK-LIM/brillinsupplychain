@@ -4,12 +4,12 @@ module.exports = {
   mode: 'development',
   entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, ''),
     filename: 'bundle.js', // string
   },
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, ''),
     compress: true,
-    port: 8000
+    port: 8080
   }
 };

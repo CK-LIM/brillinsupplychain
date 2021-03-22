@@ -13,8 +13,7 @@
 		- [Transaction Hashes](#transaction-hashes)
 		- [Etherscan screenshots](#etherscan-screenshots)
 - [Frontend](#frontend)
-	- [Frontend Online - Vue](#frontend-online---vue)
-	- [Frontend Video Walkthrough](#frontend-video-walkthrough)
+	- [Frontend Online - Vue](#frontend-online---vue))
 	- [Frontend screenshots](#frontend-screenshots)
 
 # Smart Contract - step by step
@@ -50,10 +49,12 @@ nvm use 14.15.1
 install truffle, openzelepin, webpack and dependences:
 
 ```bash
-cd project_3_Dapp_Supply_Chain\
+cd DrugChainDAPP\
 npm i -g truffle
 npm i --save openzeppelin-solidity
 npm i --save truffle-hdwallet-provider
+npm i --save-dev eth-gas-reporter
+npm i truffle-assertions
 npm i -g webpack
 npm i -g webpack-dev-server webpack-cli webpack-dev-middleware webpack-hot-middleware copy-webpack-plugin
 ```
@@ -88,7 +89,6 @@ test
 ![](docs/test_output.png)
 
 
-
 # Deployment
 
 ## Ganache
@@ -105,15 +105,15 @@ skin impose this task range body amused apple spin jazz inhale bench
 edit line 24 of ./truffle-config.js and replace with your Infura Key:
 
 ```js
-24:   const infuraKey = "c216e74355924a518e5d0d183e67b23c";	// INFURA - PROJECT ID
+24:   const infuraKey = "c216...";	// INFURA - PROJECT ID
 ```
 
 ## Get some funds
-Fist send some funds to your account. Use Ganache to get the addess of the first account from your secrets.txt mnemonic.
-Go to https://faucet.rinkeby.io/ and send a tweet as instructions. Copy-past your tweet url and have fun!
+First send some funds to your account. Use Ganache to get the addess of the first account from your secrets.txt mnemonic.
+Go to https://faucet.rinkeby.io/ and send a tweet as instructions. Copy-paste your tweet url and have fun!
 
 
-## To deploy in Brinkeby
+## To deploy in Rinkeby
 
 Then, execute the command:
 
@@ -124,7 +124,7 @@ truffle migrate --network rinkeby --reset
 ### Deployment Terminal Output
 
 ```bash
-PS D:\GITHUB_M2\udacity-blockchaindev-nanodegree\project_3_Dapp_Supply_Chain> truffle migrate --network rinkeby --reset
+.\DrugChainDAPP> truffle migrate --network rinkeby --reset
 
 Compiling your contracts...
 ===========================
@@ -135,83 +135,24 @@ Compiling your contracts...
 > Compiling .\contracts\access\roles\InspectorRole.sol
 > Compiling .\contracts\access\roles\ProducerRole.sol
 > Compiling .\contracts\core\Ownable.sol
-> Artifacts written to D:\GITHUB_M2\udacity-blockchaindev-nanodegree\project_3_Dapp_Supply_Chain\build\contracts
+> Artifacts written to .\DrugChainDAPP\build\contracts
 > Compiled successfully using:
    - solc: 0.6.12+commit.27d51765.Emscripten.clang
 
 
 
-Migrations dry-run (simulation)
-===============================
-> Network name:    'rinkeby-fork'
-> Network id:      4
-> Block gas limit: 10000000 (0x989680)
-
-
 1_initial_migration.js
 ======================
 
-   Replacing 'Migrations'
+   Deploying 'Migrations'
    ----------------------
-   > block number:        7826129
-   > block timestamp:     1609619370
-   > account:             0x6b0790A0E8186D0AFd09BCBD64D83778ab318650
-   > balance:             1.027869274
-   > gas used:            205035 (0x320eb)
-   > gas price:           21 gwei
-   > value sent:          0 ETH
-   > total cost:          0.004305735 ETH
-
-   -------------------------------------
-   > Total cost:         0.004305735 ETH
-
-
-2_deploy_contracts.js
-=====================
-
-   Replacing 'SupplyChain'
-   -----------------------
-   > block number:        7826131
-   > block timestamp:     1609619402
-   > account:             0x6b0790A0E8186D0AFd09BCBD64D83778ab318650
-   > balance:             0.95085673
-   > gas used:            3639904 (0x378a60)
-   > gas price:           21 gwei
-   > value sent:          0 ETH
-   > total cost:          0.076437984 ETH
-
-   -------------------------------------
-   > Total cost:         0.076437984 ETH
-
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0.080743719 ETH
-
-
-
-
-
-Starting migrations...
-======================
-> Network name:    'rinkeby'
-> Network id:      4
-> Block gas limit: 10000000 (0x989680)
-
-
-1_initial_migration.js
-======================
-
-   Replacing 'Migrations'
-   ----------------------
-   > transaction hash:    0xe73d1dc36379d2e8691122b12d6b8e49356c2e3a92b65a04b17d576f7522666d
-   > Blocks: 1            Seconds: 9
-   > contract address:    0xD2Ce97573b2C0d367E6b942E4A2BF3B60ee20785
-   > block number:        7826132
-   > block timestamp:     1609619430
-   > account:             0x6b0790A0E8186D0AFd09BCBD64D83778ab318650
-   > balance:             1.027554274
+   > transaction hash:    0xd26ceda3eb7e7fe27734f2395497bd3a3a4daf14151e8df444119628412613b9
+   > Blocks: 2            Seconds: 17
+   > contract address:    0x16F1eb70865083bc9EBbf2165dF564A7612Ea95b
+   > block number:        8237213
+   > block timestamp:     1615791363
+   > account:             0x0BC85Ee983E7098Ceb32a775B81299f047d54e8b
+   > balance:             137.899088239
    > gas used:            220035 (0x35b83)
    > gas price:           21 gwei
    > value sent:          0 ETH
@@ -227,31 +168,31 @@ Starting migrations...
 2_deploy_contracts.js
 =====================
 
-   Replacing 'SupplyChain'
+   Deploying 'SupplyChain'
    -----------------------
-   > transaction hash:    0x1d1610918c0f5b5af92c8131048acaae360dbba09ff8c3d8c89b8e4e3d744d7e
-   > Blocks: 0            Seconds: 8
-   > contract address:    0x82EE57820D2e9d4b1b2eCe739FEEc0acA61e3213
-   > block number:        7826134
-   > block timestamp:     1609619460
-   > account:             0x6b0790A0E8186D0AFd09BCBD64D83778ab318650
-   > balance:             0.94802173
-   > gas used:            3744904 (0x392488)
+   > transaction hash:    0x5f0d33c52f9b45d9bdbdfb10f1ca7326e1921d66e418e42064fd7a6fe798d810
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x4DF57E0D3Fdd839223445A965c77F1FE3E1b5A24
+   > block number:        8237215
+   > block timestamp:     1615791393
+   > account:             0x0BC85Ee983E7098Ceb32a775B81299f047d54e8b
+   > balance:             137.819555443
+   > gas used:            3744916 (0x392494)
    > gas price:           21 gwei
    > value sent:          0 ETH
-   > total cost:          0.078642984 ETH
+   > total cost:          0.078643236 ETH
 
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:         0.078642984 ETH
+   > Total cost:         0.078643236 ETH
 
 
 Summary
 =======
 > Total deployments:   2
-> Final cost:          0.083263719 ETH
+> Final cost:          0.083263971 ETH
 
 
 
@@ -260,14 +201,13 @@ Summary
 
 ### Contract Address
 
-contract address:    0x82EE57820D2e9d4b1b2eCe739FEEc0acA61e3213
+contract address:    0x4DF57E0D3Fdd839223445A965c77F1FE3E1b5A24
 
-<https://rinkeby.etherscan.io/address/0x82EE57820D2e9d4b1b2eCe739FEEc0acA61e3213>
+<https://rinkeby.etherscan.io/address/0x4DF57E0D3Fdd839223445A965c77F1FE3E1b5A24>
 
 ### Transaction Hashes
 
 deployment transaction hash:   <https://rinkeby.etherscan.io/tx/0x1d1610918c0f5b5af92c8131048acaae360dbba09ff8c3d8c89b8e4e3d744d7e>
-
 
 
 ### Etherscan screenshots
@@ -290,11 +230,7 @@ Then follow the instruction in [link](../appvue/)
 ## Frontend Online - Vue
 
 Following there is a online version of Fronted deployed in GitHub pages:
-[https://lucribas.github.io/prj3_Dapp_Supply_Chain/index.html](https://lucribas.github.io/prj3_Dapp_Supply_Chain/index.html).
-
-## Frontend Video Walkthrough
-
-[![Walkthrough of Supply Chain Dapp](https://img.youtube.com/vi/l4dS7XAedws/0.jpg)](https://www.youtube.com/watch?v=l4dS7XAedws)
+[https://kirinshibori.github.io/DrugChainUI/](https://kirinshibori.github.io/DrugChainUI/).
 
 
 ## Frontend screenshots
